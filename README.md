@@ -9,6 +9,10 @@ SO THAT I can plan a trip accordingly
 <br>
 <br>
 
+## MOCK-UP
+<br>
+<img src="assets/images/06-server-side-apis-homework-demo.png">
+
 ## ACCEPTANCE CRITERIA
 <br>
 GIVEN a weather dashboard with form inputs
