@@ -45,7 +45,7 @@ var displayWeather = function(weather, searchTerm) {
     // DISPLAY TEMP FUNCTION
     var displayTemp = function(weather, searchTerm) {
         // format temp to be displayed
-        var temperature = 'Temp: ' + weather.main.temp + ' &#186;';
+        var temperature = 'Temp: ' + weather.main.temp + '\xB0C ';
 
         // create a container temp
         var tempEl = document.createElement('div');
@@ -61,6 +61,23 @@ var displayWeather = function(weather, searchTerm) {
         // append container to the DOM
         weatherContainerEl.appendChild(tempEl);
     };
+
+    var displayWind = function(weather, searchTerm) {
+        // format wind speed to be displayed
+        var windSpeed = 'Wind: ' + weather.wind.speed + ' MPH';
+
+        // create a container for wind speed
+        var windEl = document.createElement('div');
+        windEl.classList = 'list-item flex-row justify-space-between align-center';
+
+        var windData = document.createElement('spam');
+        windData.textContent = windSpeed;
+
+        windEl.appendChild(windData);
+
+        weatherContainerEl.appendChild(windSpeed);
+    }
+
     displayTemp(weather, searchTerm);
 };
 

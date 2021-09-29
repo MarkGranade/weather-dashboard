@@ -17,97 +17,34 @@
     </div>
   </header>
 
-  <div class="container container-2">
-    <!-- left col container -->
-    <div class="container ml-0 pl-0 container-3">
-      <div class="col">
-        <div class="row card">
-          <h3 class="card-header text-uppercase">Search for a City</h3>
-          <form id="user-form" class="card-body">
-            <label class="form-label" for="city"></label>
-            <input name="city" id="city" placeholder="Enter City Name" type="text" autofocus="true" class="form-input" />
-            <button type="submit" class="btn">Search</button>
-          </form>
-        </div>
-        <div class="row">
-          <p>New York City</p>
-        </div>
-        <div class="row">
-          <p>London</p>
-        </div>
-    </div>
-
-    <!-- right top container -->
-    <div class="container container-4">
-      <div class="row">
-        <div class="col-12 col-md-8">
-          <!-- added <span> element to write the search term to so that users know what city's weather they're looking at -->
-          <h2 class="subtitle">Showing Weather for: <span id="weather-search-term"></span></h2>
-          <!-- <div> element that we'll write all of the weather data to -->
-          <div id="weather-container" class="list-group"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- right bottom container -->
-    <div class="container container-5">
-      <div class="row">
-        <div class="col-12 col-md-8">
-          <h3>5-Day Forcast:</h3>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-
-  <!-- LEFT COLUMN CONTAINER
-  <div class="container ml-0 pl-0">
-    <div class="col">
-        <div class="row card left-column">
-          <h3 class="card-header text-uppercase">Search for a City</h3>
-          <form id="user-form" class="card-body">
-            <label class="form-label" for="city"></label>
-            <input name="city" id="city" placeholder="Enter City Name" type="text" autofocus="true" class="form-input" />
-            <button type="submit" class="btn">Search</button>
-          </form>
-        </div>
-        <div class="row">
-          <p>New York City</p>
-        </div>
-        <div class="row">
-          <p>London</p>
-        </div>
-    </div>
-  </div>
-  <div class="container">
+  <div class="container-fluid container-2">
     <div class="row">
-      <div class="container top-row">
-        <div class="row">
-          <div class="col-12 col-md-8">
-            <h2 class="subtitle">Showing Weather for: <span id="weather-search-term"></span></h2>
-            <div id="weather-container" class="list-group"></div>
-          </div>
-        </div>
+      <div class="col-3 container-3">
+          <h3 class="card-header text-uppercase">Search for a City</h3>
+          <form id="user-form" class="card-body">
+            <label class="form-label" for="city"></label>
+            <input name="city" id="city" placeholder="Enter City Name" type="text" autofocus="true" class="form-input" />
+            <button type="submit" class="btn">Search</button>
+          </form>
       </div>
-      <div class="container bottom-row">
+
+      <div class="col">
         <div class="row">
-          <div class="col-12 col-md-8">
-            <h3>5-Day Forcast:</h3>
-          </div>
+          <!-- added <span> element to write the search term to so that users know what city's weather they're looking at -->
+            <h2 class="subtitle">Showing Weather for: <span id="weather-search-term"></span></h2>
+            <!-- <div> element that we'll write all of the weather data to -->
+            <div id="weather-container" class="list-group"></div>
+        </div>
+        <div class="row">
+          <h3>5-Day Forcast:</h3>
+          <!-- LOOK AT BOOTSTRAP DOCUMENTATION FOR "CARD GROUP" FOR 5 DAY FORCAST -->
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
-
-  
-
-
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 
 </html>
