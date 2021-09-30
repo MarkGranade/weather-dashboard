@@ -84,4 +84,3 @@ var displayWeather = function(weather, searchTerm) {
 
 
 searchFormEl.addEventListener('submit', formSubmitHandler);
-
