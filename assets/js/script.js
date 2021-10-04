@@ -84,61 +84,6 @@ var displayFiveDay = function(data) {
 
 
     }
-
-    // fiveDayContainerEl.innerHTML = `
-    // <div class='row'>
-    //     <div class='col'>
-    //         <div class='card'>
-    //             <ul>
-    //                 <div>Date</div>
-    //                 <div>${fiveTemp} °F</div>
-    //                 <div>${fiveWind} MPH</div>
-    //                 <div>${fiveHumidity} %</div>
-    //             </ul>
-    //         </div>
-    //     </div>
-    // </div>
-    // `
 };
 
 searchFormEl.addEventListener('submit', formSubmitHandler);
-
-
-//************************************************************************************************************************** */
-//************************************************************************************************************************** */
-//************************************************************************************************************************** */
-
-
-// // GET WEATHER DATA FUNCTION
-// var getWeather = function(cityName) {
-//     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=86cf2599b4d48be1597e0c714e1912bf&units=imperial';
-//     // make a request to the url
-//     fetch(apiUrl).then(function(response) {
-//         console.log(response);
-//         response.json().then(function(data) {
-//             if (response.status === 200) {
-
-//                 // 5-Day Forecast
-//                 fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=86cf2599b4d48be1597e0c714e1912bf').then((x) => {
-//                     return x.json();
-//                 }).then((response) => {
-//                     console.log('five day response data', response);
-//                     displayFiveDay(data);
-//                 });
-
-//                 // UV index Forecast
-//                 fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,daily&appid=86cf2599b4d48be1597e0c714e1912bf`)
-//                 .then(function (response) {
-//                     return response.json()
-//                 })
-//                 .then(function (uvData) {
-//                     console.log(uvData);
-//                     displayWeather(data, uvData);
-//                     // storeCities(cityInput.value, data);
-//                 });
-//             } else {
-//                 alert('This is not a City');
-//             }
-//         });
-//     });
-// };
