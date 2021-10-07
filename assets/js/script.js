@@ -71,38 +71,40 @@ var displayWeather = function(data, uvData) {
 };
 
 var displayFiveDay = function(data) {
+    console.log(data);
+
     for (var i = 1; i < 6; i++) {
         var dayEl = document.createElement('div');
         dayEl.className = 'container-3';
 
         var date = moment.unix(data.daily[i].dt).format('MM/DD/YYYY');
-        console.log(date);
 
         var dateEl = document.createElement('p');
         dateEl.textContent = date;
 
+        var iconurl = "http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png";
+        var iconEl = document.createElement('img');
+        iconEl.src = iconurl;
+
         // create a <div> for temperature
         var tempEl = document.createElement('p');
         tempEl.textContent = data.daily[i].temp.day + ' °F';
-        console.log(tempEl);
-
 
         // create a <div> for wind
         var windEl = document.createElement('p');
         windEl.textContent = data.daily[i].wind_speed + ' MPH';
-        console.log(windEl);
 
         var humidityEl = document.createElement('p');
         humidityEl.textContent = data.daily[i].humidity + '%';
 
         dayEl.appendChild(dateEl);
+        dayEl.appendChild(iconEl);
         dayEl.appendChild(tempEl);
         dayEl.appendChild(windEl);
         dayEl.appendChild(humidityEl);
 
         // create a <div> for humidity
 
-        console.log(tempEl);
         fiveDayContainerEl.appendChild(dayEl);
 
 
