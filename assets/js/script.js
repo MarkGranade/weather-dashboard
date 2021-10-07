@@ -12,18 +12,21 @@ var getWeather = function(cityName) {
     // make a request to the url
     fetch(apiUrl).then(function(response) {
         response.json().then(function(data) {
-            fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=86cf2599b4d48be1597e0c714e1912bf').then(function(response) {
-                response.json().then(function(data) {
-                    var fiveDayData = data;
-                    displayFiveDay(fiveDayData);
-                });
-            })
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,daily&appid=86cf2599b4d48be1597e0c714e1912bf`)
+            // fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=86cf2599b4d48be1597e0c714e1912bf').then(function(response) {
+            //     response.json().then(function(data) {
+            //         console.log(data);
+            //         var fiveDayData = data;
+            //         displayFiveDay(fiveDayData);
+            //     });
+            // })
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,minutely,alerts&units=imperial&appid=86cf2599b4d48be1597e0c714e1912bf`)
                 .then(function(response) {
                     return response.json()
                 })
                 .then(function (uvData) {
+                    console.log(uvData);
                     displayWeather(data, uvData);
+                    displayFiveDay(uvData);
                 })
             });
     });
@@ -53,10 +56,13 @@ var displayWeather = function(data, uvData) {
     var wind = data.wind.speed;
     var humidity = data.main.humidity;
     var uvIndex = uvData.current.uvi;
+    var date = moment.unix(data.dt).format('MM/DD/YYYY');
+    var iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+
     console.log(data);
 
     weatherContainerEl.innerHTML = `
-    <h3 id="currentName" class="fw-bold">${name}
+    <h3 id="currentName" class="fw-bold">${name} <span> ${date}</span> <img src="${iconurl}"/></h3>
     <div id="currentTemp" class="fw-normal">Temperature: ${tempData} °F</div>
     <div id="currentWind" class="fw-normal">Wind: ${wind} MPH</div>
     <div id="currentHumidity" class="fw-normal">Humidity: ${humidity}</div>
@@ -65,22 +71,39 @@ var displayWeather = function(data, uvData) {
 };
 
 var displayFiveDay = function(data) {
-    for (var i = 0; i < 5; i++) {
+    for (var i = 1; i < 6; i++) {
+        var dayEl = document.createElement('div');
+        dayEl.className = 'container-3';
+
+        var date = moment.unix(data.daily[i].dt).format('MM/DD/YYYY');
+        console.log(date);
+
+        var dateEl = document.createElement('p');
+        dateEl.textContent = date;
+
         // create a <div> for temperature
-        var tempEl = document.createElement('div');
-        tempEl.textContent = data.list[i].main.temp + ' °F';
+        var tempEl = document.createElement('p');
+        tempEl.textContent = data.daily[i].temp.day + ' °F';
         console.log(tempEl);
 
 
         // create a <div> for wind
-        var windEl = document.createElement('div');
-        windEl.textContent = data.list[i].wind.speed + ' MPH';
+        var windEl = document.createElement('p');
+        windEl.textContent = data.daily[i].wind_speed + ' MPH';
         console.log(windEl);
+
+        var humidityEl = document.createElement('p');
+        humidityEl.textContent = data.daily[i].humidity + '%';
+
+        dayEl.appendChild(dateEl);
+        dayEl.appendChild(tempEl);
+        dayEl.appendChild(windEl);
+        dayEl.appendChild(humidityEl);
 
         // create a <div> for humidity
 
         console.log(tempEl);
-        fiveDayContainerEl.appendChild(tempEl);
+        fiveDayContainerEl.appendChild(dayEl);
 
 
     }
